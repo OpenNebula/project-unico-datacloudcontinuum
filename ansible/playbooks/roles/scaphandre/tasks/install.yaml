@@ -1,0 +1,15 @@
+- name: Download Scaphandre debian package
+  ansible.builtin.get_url:
+    url: "{{ scaphandre_package_url }}"
+    dest: "{{ scaphandre_package_cache }}"
+    mode: '0644'
+
+- name: Install Scaphandre package
+  ansible.builtin.apt:
+    deb: "{{ scaphandre_package_cache }}"
+    state: present
+
+- name: Clean up downloaded package
+  ansible.builtin.file:
+    path: "{{ scaphandre_package_cache }}"
+    state: absent
