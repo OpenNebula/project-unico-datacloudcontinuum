@@ -1,0 +1,19 @@
+---
+- name: Prepare Kernel
+  ansible.builtin.include_tasks:
+    file: kernel.yaml
+
+- name: Install Scaphandre
+  ansible.builtin.include_tasks:
+    file: install.yaml
+
+- name: Scaphandre Installation Handler
+  when: ansible_facts['os_family'] == 'Debian'
+  block:
+    - name: Install Scaphandre
+      ansible.builtin.include_tasks:
+        file: install.yaml
+  rescue:
+    - name: Warning for non-Debian systems
+      ansible.builtin.debug:
+        msg: "Warning: Scaphandre installation is only supported on Debian-based systems. Current system is {{ ansible_facts['os_family'] }}."

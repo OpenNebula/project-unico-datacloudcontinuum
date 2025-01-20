@@ -1,0 +1,33 @@
+all:
+  vars:
+    ansible_user: root
+    one_version: '6.10'
+    unnatend_disable: true
+    vn:
+      service:
+        managed: true
+        template:
+          VN_MAD: dummy
+          PHYDEV: ""
+          BRIDGE: brpub
+          BRIDGE_TYPE: linux
+          AR:
+            TYPE: IP4
+            IP: 172.20.0.3
+            SIZE: 65533
+          NETWORK_ADDRESS: 172.20.0.0
+          NETWORK_MASK: 255.255.0.0
+          GATEWAY: 172.20.0.1
+          DNS: 172.20.0.1
+
+frontend:
+  vars:
+    one_pass: opennebula
+    features:
+      prometheus: true
+      aiops: true # placeholder
+  hosts:
+    f1: { ansible_host: 192.168.150.11 }
+node:
+  hosts:
+    f1: { ansible_host: 192.168.150.11 }

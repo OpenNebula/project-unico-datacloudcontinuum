@@ -1,0 +1,12 @@
+---
+
+- name: Check CPU vendor
+  ansible.builtin.command: grep -m1 vendor_id /proc/cpuinfo
+  register: cpu_vendor
+  changed_when: false
+
+- name: Enable intel_rapl module if Intel CPU
+  ansible.builtin.modprobe:
+    name: intel_rapl_common
+    state: present
+  when: "'Intel' in cpu_vendor.stdout"

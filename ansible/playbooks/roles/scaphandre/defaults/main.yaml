@@ -1,0 +1,4 @@
+# roles/scaphandre/defaults/main.yml
+---
+scaphandre_version: "v1.0.0"
+scaphandre_package_url: "https://github.com/hubblo-org/scaphandre/releases/download/{{ scaphandre_version }}/scaphandre_{{ scaphandre_version }}-deb12_amd64.deb"
