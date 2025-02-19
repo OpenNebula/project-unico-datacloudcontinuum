@@ -17,3 +17,7 @@
     - name: Warning for non-Debian systems
       ansible.builtin.debug:
         msg: "Warning: Scaphandre installation is only supported on Debian-based systems. Current system is {{ ansible_facts['os_family'] }}."
+
+- name: Patch Prometheus VM Metrics collection
+  ansible.builtin.include_tasks:
+    file: prometheus.yaml
