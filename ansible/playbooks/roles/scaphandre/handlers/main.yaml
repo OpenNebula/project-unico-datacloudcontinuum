@@ -1,0 +1,10 @@
+---
+- name: Restart Prometheus
+  ansible.builtin.systemd:
+    name: opennebula-prometheus
+    state: restarted
+
+- name: Restart OpenNebula Exporter
+  ansible.builtin.systemd:
+    name: opennebula-exporter
+    state: restarted

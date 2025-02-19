@@ -1,0 +1,14 @@
+---
+- name: Copy collector files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/usr/lib/one/opennebula_exporter/{{ item }}"
+    mode: '0644'
+    owner: root
+    group: root
+  loop:
+    - opennebula_collector.rb
+    - opennebula_power_collector.rb
+  notify:
+    - Restart Prometheus
+    - Restart OpenNebula Exporter
