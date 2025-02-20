@@ -1,6 +1,6 @@
 # Description
 
-This repository contains a tool to automatically deploy OpenNebula control plane on a bare metal host, adding the needed integrations required in the DATACLOUDCONTINUUM project to optimize the use of resources by using AI techniques.
+This repository contains a tool to automatically deploy OpenNebula control planes on a bare metal host, adding the needed integrations required in the DATACLOUDCONTINUUM project to optimize the use of resources by using AI techniques.
 
 Currently this repository deploys an OpenNebula installation with
 
