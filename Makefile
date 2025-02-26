@@ -13,6 +13,7 @@ opennebula:
 	[[ -d ${ONE_DEPLOY}/ansible_collections/community/general/ ]] || make dependencies_deploy
 	cd ansible && echo "$${ONE_DEPLOY_INVENTORY}" > inventory.yaml
 	cd ansible && ansible-playbook playbooks/dcc.yaml -i inventory.yaml
+	@echo oneadmin password: "${ONE_PASSWORD}"
 
 content:
 	cd terraform && echo "$${TERRAFORM_VARS}" > terraform.tfvars
@@ -23,7 +24,12 @@ clean:
 
 dcc:
 	make opennebula content
+	@echo oneadmin password: "${ONE_PASSWORD}"
 
 debug:
 	@echo "$${ONE_DEPLOY_INVENTORY}"
 	@echo "$${TERRAFORM_VARS}"
+
+redirect:
+	ssh -v -N -L 2633:localhost:2633 root@${ONE_HOST} &
+	ssh -v -N -L 2474:localhost:2474 root@${ONE_HOST} &
