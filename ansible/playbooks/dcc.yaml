@@ -1,8 +1,15 @@
 ---
-- name: Install OpenNebula
-  ansible.builtin.import_playbook: opennebula.deploy.main
+# - name: Install OpenNebula
+#   ansible.builtin.import_playbook: opennebula.deploy.main
 
-- name: Install scaphandre
-  hosts: "{{ node_group | d('node') }}"
+# - name: Install scaphandre
+#   hosts: "{{ node_group | d('node') }}"
+#   roles:
+#     - role: scaphandre
+#       tags: [preinstall]
+
+- name: Adjust Prometheus
+  hosts: "{{ frontend_group | d('frontend') }}"
   roles:
-    - scaphandre
+    - role: prometheus
+      tags: [patch]

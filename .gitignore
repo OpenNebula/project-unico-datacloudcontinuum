@@ -24,6 +24,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Ignore user settings
 Makefile.local
 
 # Ignore ansible generated files
@@ -32,3 +33,6 @@ ansible/inventory.yaml
 # Ignore laptop files
 *.DS_Store
 .vscode/
+
+# Ignore test env
+sm07/
