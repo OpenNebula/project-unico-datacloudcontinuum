@@ -27,7 +27,10 @@ dcc:
 	@echo oneadmin password: "${ONE_PASSWORD}"
 
 debug:
+	@echo "--ANSIBLE--"
 	@echo "$${ONE_DEPLOY_INVENTORY}"
+	@echo ""
+	@echo "--TERRAFORM--"
 	@echo "$${TERRAFORM_VARS}"
 
 redirect:
